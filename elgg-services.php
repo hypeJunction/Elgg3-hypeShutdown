@@ -1,5 +1,5 @@
 <?php
 
 return [
-	'shutdown.queue' => \hypeJunction\Shutdown\Queue::class,
+	'shutdown.queue' => \DI\object(\hypeJunction\Shutdown\Queue::class),
 ];
