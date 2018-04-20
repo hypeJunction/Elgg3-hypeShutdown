@@ -30,6 +30,10 @@ class Bootstrap extends PluginBootstrap {
 		$this->elgg()->events->registerHandler('send:before', 'http_response', CloseConnection::class, 1000);
 		$this->elgg()->events->registerHandler('send:after', 'http_response', FlushBuffer::class, 1000);
 		$this->elgg()->events->registerHandler('shutdown', 'system', CloseConnection::class);
+
+		$this->elgg()->events->registerHandler('shutdown', 'system', function() {
+			Queue::instance()->process();
+		});
 	}
 
 	/**
@@ -62,7 +66,7 @@ class Bootstrap extends PluginBootstrap {
 	 * @return void
 	 */
 	public function shutdown() {
-		Queue::instance()->process();
+
 	}
 
 	/**
