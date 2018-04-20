@@ -19,7 +19,7 @@ elgg_register_event_handler('shutdown', 'system', function() {
 You can also use a runtime queue:
 
 ```php
-elgg()->{'shutdown.queue'}->queue(function() use ($video) {
+\hypeJunction\Shutdown\Queue::instance()->queue(function() use ($video) {
 	$video->convert();
 });
 ```

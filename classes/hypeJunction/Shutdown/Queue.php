@@ -2,7 +2,11 @@
 
 namespace hypeJunction\Shutdown;
 
+use Elgg\Di\ServiceFacade;
+
 class Queue {
+
+	use ServiceFacade;
 
 	/**
 	 * @var callable[]
@@ -29,5 +33,12 @@ class Queue {
 		}
 
 		$this->queue = [];
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public static function name() {
+		return 'shutdown.queue';
 	}
 }

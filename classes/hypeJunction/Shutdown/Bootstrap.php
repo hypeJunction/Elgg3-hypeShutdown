@@ -62,10 +62,7 @@ class Bootstrap extends PluginBootstrap {
 	 * @return void
 	 */
 	public function shutdown() {
-		$queue = elgg()->{'shutdown.queue'};
-		/* @var $queue Queue */
-
-		$queue->process();
+		Queue::instance()->process();
 	}
 
 	/**
